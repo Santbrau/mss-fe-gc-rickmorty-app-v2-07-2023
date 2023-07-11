@@ -1,0 +1,20 @@
+<div class="character-grid">
+  <div class="character-card" *ngFor="let character of displayedCharacters">
+    <app-character-details [character]="character" (showDetails)="showCharacterDetails(character)"></app-character-details>
+  </div>
+</div>
+
+<div *ngIf="selectedCharacter" class="character-overlay">
+  <div class="character-details-panel">
+    <div class="character-details">
+      <img [src]="selectedCharacter?.image" alt="Character Image">
+      <h2>{{ selectedCharacter?.name }}</h2>
+      <p>Status: {{ selectedCharacter?.status }}</p>
+      <p>Species: {{ selectedCharacter?.species }}</p>
+      <p>Gender: {{ selectedCharacter?.gender }}</p>
+      <p>Origin: {{ selectedCharacter?.origin?.name }}</p>
+      <p>Location: {{ selectedCharacter?.location?.name }}</p>
+    </div>
+    <button class="btn btn-warning btn-close" (click)="closeCharacterDetails()">Close</button>
+  </div>
+</div>
